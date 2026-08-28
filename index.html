@@ -1,10 +1,856 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Runhua Wu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Runhua Wu is a Ph.D. student in Operations Research at Georgia Institute of Technology, working on queueing systems and stochastic processes.">
+  <meta name="author" content="Runhua Wu">
+  <meta name="theme-color" content="#f7f5ef">
+  <link rel="canonical" href="https://runhua-wu.github.io/">
+  <title>Runhua Wu | Georgia Tech</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Runhua Wu",
+    "url": "https://runhua-wu.github.io/",
+    "jobTitle": "Ph.D. Student in Operations Research",
+    "email": "mailto:rwu330@gatech.edu",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Georgia Institute of Technology"
+    },
+    "sameAs": [
+      "https://github.com/Runhua-Wu"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --surface: #fffefb;
+      --text: #1e211f;
+      --muted: #646861;
+      --line: #dad8d0;
+      --accent: #8d7424;
+      --accent-dark: #655314;
+      --soft-accent: #eee8d5;
+      --max-width: 1080px;
+      --shadow: 0 16px 40px rgba(36, 37, 32, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(218, 216, 208, 0.88);
+      background: rgba(247, 245, 239, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      width: min(calc(100% - 40px), var(--max-width));
+      min-height: 70px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px 20px;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--text);
+    }
+
+    main {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: minmax(230px, 330px) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(52px, 8vw, 104px);
+      padding: 76px 0 66px;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(238, 235, 225, 0.58));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      font-size: clamp(3rem, 7vw, 5.65rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-title {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2.3vw, 1.32rem);
+      line-height: 1.5;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 0;
+      color: #373a36;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 45px;
+      padding: 10px 18px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 999px;
+      background: var(--accent-dark);
+      color: #fff;
+      font-size: 0.91rem;
+      font-weight: 720;
+      text-decoration: none;
+      transition: transform 140ms ease, background 140ms ease, color 140ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent-dark);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: var(--soft-accent);
+      color: var(--text);
+    }
+
+    .section {
+      scroll-margin-top: 92px;
+      padding: 78px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(160px, 250px) minmax(0, 1fr);
+      gap: 54px;
+      align-items: start;
+    }
+
+    .section-label {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: 0.79rem;
+      font-weight: 780;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 26px;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      margin-bottom: 9px;
+      font-size: 1.22rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .lead {
+      max-width: 790px;
+      color: #393c38;
+      font-size: 1.08rem;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: rgba(255, 254, 251, 0.72);
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .publication-list,
+    .timeline,
+    .simple-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 142px minmax(0, 1fr);
+      gap: 25px;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .publication:first-child {
+      border-top: 0;
+      padding-top: 2px;
+    }
+
+    .status {
+      width: fit-content;
+      padding: 4px 9px;
+      border: 1px solid #c9c19f;
+      border-radius: 999px;
+      background: var(--soft-accent);
+      color: #5b4c1a;
+      font-size: 0.72rem;
+      font-weight: 770;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .publication-title {
+      margin: 0 0 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.16rem;
+      line-height: 1.45;
+    }
+
+    .publication-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 28px;
+      padding: 23px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .timeline-date {
+      color: var(--muted);
+      font-size: 0.87rem;
+      font-weight: 680;
+    }
+
+    .timeline-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px 58px;
+    }
+
+    .subsection-title {
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      font-family: inherit;
+      font-size: 0.81rem;
+      font-weight: 780;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .simple-list li {
+      padding: 9px 0;
+      color: #3b3e3a;
+    }
+
+    .course-code {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .education-entry + .education-entry {
+      margin-top: 30px;
+    }
+
+    .education-entry h3 {
+      margin-bottom: 4px;
+    }
+
+    .degree-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 5px;
+    }
+
+    .degree-line strong {
+      font-weight: 690;
+    }
+
+    .degree-line span {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .education-entry p {
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      margin-bottom: 8px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    }
+
+    .contact-box p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+      padding: 34px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+
+    @media (max-width: 830px) {
+      .nav-wrap {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .site-nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 34px;
+        padding: 60px 0;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        font-size: 16px;
+      }
+
+      .nav-wrap,
+      main,
+      footer {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .site-nav {
+        gap: 5px 14px;
+      }
+
+      .site-nav a {
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 45px;
+      }
+
+      .photo-placeholder {
+        width: min(62vw, 230px);
+      }
+
+      h1 {
+        font-size: clamp(3rem, 18vw, 4.4rem);
+      }
+
+      .section {
+        padding: 59px 0;
+      }
+
+      .publication,
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .degree-line,
+      .contact-box,
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .degree-line span {
+        white-space: normal;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button {
+        transition: none;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-actions,
+      .contact-box,
+      footer {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .photo-placeholder {
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Runhua Wu</h1>
-    <p>My academic homepage is under construction.</p>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top">Runhua Wu</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#talks">Talks</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#education">Education</a>
+        <a href="Runhua_Wu_CV.pdf">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Replace this empty div with an image after selecting a headshot:
+           <img class="photo-placeholder" src="profile.jpg" alt="Portrait of Runhua Wu">
+      -->
+      <div class="photo-placeholder" aria-label="Profile photograph space intentionally left blank"></div>
+
+      <div>
+        <p class="eyebrow">Queueing systems · Stochastic processes</p>
+        <h1 id="hero-title">Runhua Wu</h1>
+        <p class="hero-title">
+          Ph.D. Student in Operations Research<br>
+          H. Milton Stewart School of Industrial and Systems Engineering<br>
+          Georgia Institute of Technology
+        </p>
+        <p class="hero-copy">
+          I study stochastic systems, with a particular focus on control and scheduling in queues where customers may abandon. I am advised by Professor Hayriye Ayhan.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="Runhua_Wu_CV.pdf">View CV</a>
+          <a class="button secondary" href="mailto:rwu330@gatech.edu">Email</a>
+          <a class="button secondary" href="https://github.com/Runhua-Wu">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="section-label">About</p>
+        <div>
+          <h2>Applied probability for service systems.</h2>
+          <p class="lead">
+            I am a Ph.D. student in Operations Research at Georgia Tech. My research interests include queueing systems and stochastic processes. I am especially interested in structural properties of optimal policies for admission control, service-rate control, and server scheduling in systems with impatient customers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="section-heading">
+        <p class="section-label">Research</p>
+        <div>
+          <h2>Current research directions</h2>
+          <p class="lead">
+            My work develops analytical characterizations and computational methods for controlling queueing systems with customer abandonment.
+          </p>
+          <div class="research-grid">
+            <article class="card">
+              <h3>Admission control</h3>
+              <p>
+                Characterizing optimal admission decisions in queueing systems with multiple classes of impatient customers.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Service-rate control</h3>
+              <p>
+                Studying optimal service-rate policies in queues with finite or infinite buffer space and developing efficient algorithms to compute them.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Server scheduling</h3>
+              <p>
+                Investigating optimal non-anticipating scheduling policies for M/G/1+M queueing systems.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="section-heading">
+        <p class="section-label">Publications</p>
+        <div>
+          <h2>Publications and working papers</h2>
+          <ol class="publication-list">
+            <li class="publication">
+              <div><span class="status">Published</span></div>
+              <div>
+                <p class="publication-title">
+                  “Optimal Admission Control in Queues with Multiple Customer Classes and Abandonments”
+                </p>
+                <p class="publication-meta">
+                  <strong>Runhua Wu</strong> and Hayriye Ayhan. <em>Queueing Systems</em> 109, 6 (2025).
+                </p>
+              </div>
+            </li>
+            <li class="publication">
+              <div><span class="status">Major revision</span></div>
+              <div>
+                <p class="publication-title">
+                  “Service Rate Control in Queues with Abandonments”
+                </p>
+                <p class="publication-meta">
+                  <strong>Runhua Wu</strong> and Hayriye Ayhan.
+                </p>
+              </div>
+            </li>
+            <li class="publication">
+              <div><span class="status">Submitted</span></div>
+              <div>
+                <p class="publication-title">
+                  “Maximizing Throughput in an M/G/1 Queue with Customer Abandonments”
+                </p>
+                <p class="publication-meta">
+                  <strong>Runhua Wu</strong>, Hayriye Ayhan, and D. G. Down.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="talks">
+      <div class="section-heading">
+        <p class="section-label">Talks</p>
+        <div>
+          <h2>Selected presentations</h2>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-date">October 2025</div>
+              <div>
+                <h3>Service Rate Control in Queues with Abandonments</h3>
+                <p>2025 INFORMS Annual Meeting</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-date">July 2025</div>
+              <div>
+                <h3>Service Rate Control in Queues with Abandonments</h3>
+                <p>2025 INFORMS Applied Probability Conference</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-date">October 2024</div>
+              <div>
+                <h3>Optimal Admission Control in Queues with Multiple Customer Classes and Abandonments</h3>
+                <p>2024 INFORMS Annual Meeting</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="section-heading">
+        <p class="section-label">Teaching</p>
+        <div>
+          <h2>Teaching experience</h2>
+          <p class="lead">
+            Teaching Assistant, Georgia Institute of Technology. Responsibilities have included office hours, grading assignments and examinations, and organizing course notes.
+          </p>
+          <div class="two-column">
+            <div>
+              <h3 class="subsection-title">Graduate courses</h3>
+              <ul class="simple-list">
+                <li>Stochastic Processes I <span class="course-code">ISyE 6761</span></li>
+                <li>Stochastic Processes II <span class="course-code">ISyE 6762</span></li>
+                <li>Design and Analysis of Experiments <span class="course-code">ISyE 6413</span></li>
+                <li>Computational Statistics <span class="course-code">ISyE 6416</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="subsection-title">Undergraduate courses</h3>
+              <ul class="simple-list">
+                <li>Regression and Forecasting <span class="course-code">ISyE 4031</span></li>
+                <li>Stochastic Manufacturing and Service Systems <span class="course-code">ISyE 3232</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-heading">
+        <p class="section-label">Education</p>
+        <div>
+          <h2>Education</h2>
+          <div class="education-entry">
+            <h3>Georgia Institute of Technology</h3>
+            <div class="degree-line">
+              <strong>Ph.D. in Operations Research</strong>
+              <span>2023–present</span>
+            </div>
+            <p>Advisor: Hayriye Ayhan · Comprehensive examinations completed</p>
+          </div>
+          <div class="education-entry">
+            <h3>Georgia Institute of Technology</h3>
+            <div class="degree-line">
+              <strong>M.S. in Statistics</strong>
+              <span>2022–2023</span>
+            </div>
+          </div>
+          <div class="education-entry">
+            <h3>Fudan University</h3>
+            <div class="degree-line">
+              <strong>B.Math., Minor in Computational Mathematics</strong>
+              <span>2018–2022</span>
+            </div>
+            <p>Recipient of the Math Undergraduate Scholarship</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <p class="section-label">Skills</p>
+        <div>
+          <h2>Technical background</h2>
+          <div class="two-column">
+            <div>
+              <h3 class="subsection-title">Programming</h3>
+              <p>Python · MATLAB · R · LaTeX</p>
+            </div>
+            <div>
+              <h3 class="subsection-title">Languages</h3>
+              <p>Chinese (native) · English (proficient)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal interests section prepared but intentionally hidden until the content is chosen.
+         Remove "is-hidden" from the class and replace the bracketed text when ready.
+    -->
+    <section class="section is-hidden" id="personal">
+      <div class="section-heading">
+        <p class="section-label">Beyond academia</p>
+        <div>
+          <h2>Outside research</h2>
+          <p class="lead">Outside academia, I enjoy [interest one], [interest two], and [interest three].</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Contact</h2>
+          <p>H. Milton Stewart School of Industrial and Systems Engineering<br>Georgia Institute of Technology · Atlanta, Georgia</p>
+        </div>
+        <a class="button" href="mailto:rwu330@gatech.edu">rwu330@gatech.edu</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row">
+      <span>© 2026 Runhua Wu</span>
+      <span>Hosted with GitHub Pages</span>
+    </div>
+  </footer>
 </body>
 </html>
