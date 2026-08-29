@@ -7,7 +7,8 @@
   <meta name="author" content="Runhua Wu">
   <meta name="theme-color" content="#f6f5f1">
   <link rel="canonical" href="https://runhua-wu.github.io/research/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/site-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/site-icon.png">
   <title>Research | Runhua Wu</title>
   <script>
     (() => {
@@ -23,7 +24,10 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
   <div class="shell nav-row">
-    <a class="brand" href="/">Runhua Wu</a>
+    <a class="brand" href="/" aria-label="Runhua Wu — home">
+      <img class="brand-icon" src="/site-icon.png" alt="" width="35" height="35">
+      <span>Runhua Wu</span>
+    </a>
     <div class="nav-side">
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="/about/">About</a><a href="/research/" aria-current="page">Research</a><a href="/publications/">Publications</a><a href="/talks/">Talks</a><a href="/teaching/">Teaching</a><a href="/Runhua_Wu_CV.pdf">CV</a>
@@ -34,50 +38,17 @@
 </header>
 
 <main class="page-main shell" id="main-content">
-  <header class="page-header">
+  <header class="page-header compact-page-header">
     <p class="page-kicker">Research</p>
-    <h1 class="page-title">Stochastic systems and queueing control</h1>
-    <p class="page-intro">My research focuses on structural and exact analysis of queueing systems with customer abandonments, using tools from stochastic processes, Markov decision processes, and dynamic optimization.</p>
-    <ul class="tag-list" aria-label="Research interests">
-      <li>Queueing systems</li>
-      <li>Customer abandonments</li>
-      <li>Stochastic processes</li>
-      <li>Markov decision processes</li>
-      <li>Stochastic optimization</li>
-      <li>Dynamic optimization</li>
-    </ul>
+    <h1 class="page-title">Queueing systems with customer abandonments</h1>
   </header>
 
   <div class="content-stack">
     <section class="content-section">
-      <div class="research-grid">
-        <article class="research-card">
-          <span class="number">01</span>
-          <h2>Admission control</h2>
-          <p>I study admission decisions in queueing systems with multiple classes of impatient customers, with an emphasis on complete structural characterizations of optimal policies.</p>
-        </article>
-        <article class="research-card">
-          <span class="number">02</span>
-          <h2>Service-rate control</h2>
-          <p>I investigate optimal service-rate policies in queues with finite and infinite buffer space and develop efficient algorithms for computing these policies.</p>
-        </article>
-        <article class="research-card">
-          <span class="number">03</span>
-          <h2>Server scheduling</h2>
-          <p>I study non-anticipating server scheduling in queues with abandonments, including M/G/1+M systems and long-run throughput objectives.</p>
-        </article>
-        <article class="research-card">
-          <span class="number">04</span>
-          <h2>Exact MDP analysis</h2>
-          <p>I am interested in exact policy analysis for continuous- and discrete-time Markovian systems, rather than relying only on approximations or limiting regimes.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section">
       <h2 class="section-title">Research perspective</h2>
       <div class="prose">
-        <p>Many service systems are affected by impatience: customers may leave while waiting, so control decisions influence both congestion and abandonment. My work seeks policy structures that are mathematically exact, interpretable, and computationally useful.</p>
+        <p>Queueing systems with customer abandonments, also called queues with impatient customers, arise in many real-world service environments, including call centers, healthcare systems, and perishable-inventory models. In these systems, customers may leave before receiving service when their waiting times exceed their tolerance levels. This behavior can significantly affect system performance through lost revenue, reduced service efficiency, and lower customer satisfaction. Analyzing and optimizing such systems is therefore both practically important and mathematically rich.</p>
+        <p>Because abandonment interacts directly with congestion, control decisions can influence both waiting times and the likelihood that customers leave. My work seeks policy structures that are mathematically exact, interpretable, and computationally useful.</p>
         <p>Current projects span admission control, service-rate control, and scheduling. See <a href="/publications/">Publications</a> for papers and preprints.</p>
       </div>
     </section>

@@ -7,7 +7,8 @@
   <meta name="author" content="Runhua Wu">
   <meta name="theme-color" content="#f6f5f1">
   <link rel="canonical" href="https://runhua-wu.github.io/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/site-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/site-icon.png">
   <title>Runhua Wu | Georgia Tech</title>
   <script>
     (() => {
@@ -23,7 +24,10 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
   <div class="shell nav-row">
-    <a class="brand" href="/">Runhua Wu</a>
+    <a class="brand" href="/" aria-label="Runhua Wu — home">
+      <img class="brand-icon" src="/site-icon.png" alt="" width="35" height="35">
+      <span>Runhua Wu</span>
+    </a>
     <div class="nav-side">
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="/about/">About</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/talks/">Talks</a><a href="/teaching/">Teaching</a><a href="/Runhua_Wu_CV.pdf">CV</a>
@@ -41,9 +45,13 @@
     <div class="portrait-frame" aria-label="Profile photograph space intentionally left blank"></div>
 
     <div class="profile-copy">
-      <p class="kicker">Operations Research · Georgia Tech</p>
+      <div class="affiliation-kicker" aria-label="Academic affiliation">
+        <span class="affiliation-primary">Operations Research</span>
+        <span>H. Milton Stewart School of Industrial and Systems Engineering</span>
+        <span>Georgia Institute of Technology</span>
+      </div>
       <h1 class="profile-name" id="home-name">Runhua Wu <span class="cn-name" lang="zh-Hans">吴润华</span></h1>
-      <p class="profile-intro">I am a 4th-year PhD candidate in Operations Research at Georgia Tech. My research focuses on stochastic processes, queueing systems with customer abandonments, continuous and discrete time Markovian systems, stochastic and dynamic optimization, and exact analysis on Markovian decision processes.</p>
+      <p class="profile-intro">I am a 4th-year PhD candidate in Operations Research at Georgia Tech. I am advised by Professor <a href="https://www.isye.gatech.edu/users/hayriye-ayhan">Hayriye Ayhan</a>. My research focuses on stochastic processes, queueing systems with customer abandonments, continuous- and discrete-time Markovian systems, stochastic and dynamic optimization, and exact analysis of Markov decision processes.</p>
 
       <div class="contact-line" aria-label="Contact information">
         <a href="mailto:rwu330@gatech.edu">rwu330@gatech.edu</a>
@@ -57,27 +65,6 @@
         <a class="home-link cv" href="/Runhua_Wu_CV.pdf">Academic CV</a>
         <a class="home-link" href="https://github.com/Runhua-Wu">GitHub</a>
       </div>
-    </div>
-  </section>
-
-  <section class="quick-nav" aria-labelledby="explore-heading">
-    <p class="quick-nav-label" id="explore-heading">Explore</p>
-    <div class="quick-nav-grid">
-      <a class="quick-card" href="/research/">
-        <strong>Research</strong>
-        <span>Queueing control, Markovian systems, and stochastic optimization.</span>
-        <em aria-hidden="true">→</em>
-      </a>
-      <a class="quick-card" href="/publications/">
-        <strong>Publications</strong>
-        <span>Journal articles, preprints, and current working papers.</span>
-        <em aria-hidden="true">→</em>
-      </a>
-      <a class="quick-card" href="/talks/">
-        <strong>Talks</strong>
-        <span>Selected conference presentations in applied probability and OR.</span>
-        <em aria-hidden="true">→</em>
-      </a>
     </div>
   </section>
 </main>

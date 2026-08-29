@@ -96,12 +96,22 @@ a:focus-visible, button:focus-visible {
 
 .brand {
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text);
   font-family: Georgia, "Times New Roman", "Noto Serif CJK SC", serif;
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   text-decoration: none;
+}
+.brand-icon {
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  display: block;
+  object-fit: cover;
 }
 
 .nav-side {
@@ -219,11 +229,21 @@ main { min-height: calc(100vh - 151px); }
   object-fit: cover;
 }
 
-.kicker {
-  margin: 0 0 13px;
+.affiliation-kicker {
+  display: grid;
+  gap: 2px;
+  margin: 0 0 17px;
   color: var(--accent-ink);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+  line-height: 1.45;
+}
+.affiliation-kicker span { display: block; }
+.affiliation-kicker .affiliation-primary {
+  margin-bottom: 2px;
   font-size: 0.76rem;
-  font-weight: 780;
+  font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -258,6 +278,12 @@ h1, h2, h3 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.08rem, 2vw, 1.27rem);
   line-height: 1.72;
+}
+.profile-intro a {
+  color: var(--accent-ink);
+  font-weight: 650;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 .contact-line {
@@ -364,6 +390,7 @@ h1, h2, h3 {
   max-width: var(--reading);
   margin-bottom: 56px;
 }
+.compact-page-header { margin-bottom: 42px; }
 .page-kicker {
   margin: 0 0 9px;
   color: var(--accent-ink);
@@ -601,11 +628,12 @@ h1, h2, h3 {
   .site-nav { max-width: calc(100% - 48px); flex-wrap: wrap; overflow: visible; gap: 0 14px; padding-bottom: 2px; }
   .site-nav a { font-size: 0.81rem; }
   .theme-toggle { position: absolute; top: 0; right: 0; }
-  .home-main { padding-top: 44px; }
+  .home-main { padding-top: 44px; padding-bottom: 54px; }
   .profile-panel { grid-template-columns: 1fr; gap: 34px; }
   .portrait-frame { width: min(57vw, 220px); }
   .profile-name { font-size: clamp(2.55rem, 14vw, 3.75rem); }
   .profile-name .cn-name { display: block; margin: 0.28em 0 0; font-size: 0.45em; vertical-align: 0; }
+  .affiliation-kicker { max-width: 34rem; }
   .quick-nav { margin-top: 58px; }
   .quick-nav-grid,
   .research-grid,
